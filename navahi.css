@@ -340,10 +340,11 @@ p{margin:18px 0 0;}
 /* ================= SECTION EDUCATION — BA HỆ THỐNG NUÔI =================
    Ba khối xếp dọc để khách cuộn qua lần lượt ba môi trường sống.
    Ảnh làm phần lớn việc giải thích; chữ ngắn, trung tính. */
+.wrap-head{margin-bottom:30px;}
 .edu .sys + .sys{margin-top:40px;}
+.sys h3{margin:20px 0 0;font-size:clamp(22px,5.2vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.15;}
 .sys-photo{width:100%;border-radius:16px;overflow:hidden;background:var(--xanh-nhat);}
 .sys-photo img{width:100%;height:auto;display:block;}   /* mobile: không cắt gì */
-.sys h2{margin-top:20px;font-size:clamp(24px,5.6vw,34px);}
 .sys p{max-width:32em;}
 @media(min-width:900px){
   .edu .wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
