@@ -1,0 +1,379 @@
+/* ==========================================================================
+   NAVAHI FARMS — LANDING v0.1 (staging)
+   --------------------------------------------------------------------------
+   SWAP ẢNH: chỉ sửa 6 dòng --img-* ngay dưới đây. Không cần đụng chỗ nào khác.
+   Khi chưa có ảnh, để nguyên "none" -> slot hiện khung placeholder có nhãn.
+   ========================================================================== */
+:root{
+  --img-hero: url("assets/hero.webp");
+  --img-nuoi: url("assets/nuoi.webp");
+  --img-long: url("assets/nuoi-long.webp");
+  --img-nen:  url("assets/nuoi-nen.webp");
+  --img-pack-10: url("assets/pack10.webp");
+  --img-pack-50: url("assets/pack50.webp");
+  --img-trai: url("assets/trai.webp");
+
+  /* Bảng màu Navahi — 9 mã đã khoá (ND-002). Không thêm màu ngoài bảng này. */
+  --vang:      #FABD03;
+  --vang-trung:#FFD21B;
+  --xanh:      #008AFC;
+  --navy:      #023059;
+  --nga:       #F6F3F0;
+  --trang:     #FFFFFF;
+  --be:        #E9DBB9;
+  --xanh-nhat: #A8D0F6;
+  --xanh-dam:  #6CB0F2;
+
+  --wrap: 1120px;
+  --pad: 22px;
+  --hdr-h: 72px;
+
+  /* Wordmark Navahi Farms — tách từ file logo PO gửi, chữ trắng nền trong suốt */
+  --wordmark: url("assets/wordmark.png");
+}
+
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overflow-x:hidden;}
+body{
+  margin:0;
+  background:var(--nga);
+  color:var(--navy);
+  font-family:"Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+
+/* ---------- HEADER ---------- */
+.hdr{
+  position:sticky;top:0;z-index:60;
+  background:var(--xanh);
+  /* Vạch vàng giữ header tách bạch khi cuộn qua section 5 cũng nền xanh */
+  border-bottom:3px solid var(--vang);
+}
+.hdr-in{
+  max-width:var(--wrap);margin:0 auto;padding:0 var(--pad);
+  height:var(--hdr-h);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.mark{display:block;text-decoration:none;flex:0 0 auto;}
+.wordmark{
+  display:block;background:var(--wordmark) left center/contain no-repeat;
+  width:86px;height:48px;
+}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+/* Hamburger */
+.burger{
+  width:46px;height:46px;flex:0 0 auto;margin-right:-8px;
+  background:none;border:0;padding:0;cursor:pointer;
+  display:grid;place-content:center;gap:6px;
+}
+.burger span{display:block;width:26px;height:2.5px;background:#fff;border-radius:2px;
+  transition:transform .22s ease,opacity .18s ease;}
+.hdr.menu-open .burger span:nth-child(1){transform:translateY(8.5px) rotate(45deg);}
+.hdr.menu-open .burger span:nth-child(2){opacity:0;}
+.hdr.menu-open .burger span:nth-child(3){transform:translateY(-8.5px) rotate(-45deg);}
+
+/* Menu */
+.menu{
+  position:absolute;left:0;right:0;top:100%;
+  background:var(--navy);
+  display:none;padding:6px var(--pad) 16px;
+}
+.hdr.menu-open .menu{display:block;}
+.menu a{
+  display:block;color:#fff;text-decoration:none;
+  font-size:17.5px;font-weight:600;line-height:1.35;padding:13px 0;
+  border-bottom:1px solid rgba(255,255,255,.13);
+}
+.menu a:last-child{border-bottom:0;}
+.menu a:hover{color:var(--vang);}
+@media(min-width:900px){
+  :root{--hdr-h:80px;}
+  .wordmark{width:100px;height:56px;}
+  .menu{left:auto;right:max(0px,calc((100% - var(--wrap)) / 2));
+        width:320px;border-radius:0 0 16px 16px;}
+}
+
+/* ---------- KHUNG CHUNG ---------- */
+.sec{padding:64px 0;}
+section[id],div[id]{scroll-margin-top:calc(var(--hdr-h) + 12px);}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad);}
+.narrow{max-width:640px;}
+h1,h2{margin:0;font-weight:700;letter-spacing:-.02em;line-height:1.12;}
+h1{font-size:clamp(34px,8.4vw,60px);}
+h2{font-size:clamp(27px,6.2vw,44px);}
+p{margin:18px 0 0;}
+.lead{font-size:clamp(17px,4.3vw,20px);line-height:1.55;max-width:34em;}
+
+/* ---------- KHỐI ẢNH (placeholder tự hiện khi chưa có ảnh) ---------- */
+.shot{
+  position:relative;border-radius:18px;overflow:hidden;background:var(--xanh-nhat);
+  background-size:cover;background-position:center;
+  aspect-ratio:4/5;
+}
+.shot::after{
+  content:attr(data-label);
+  position:absolute;inset:0;display:grid;place-items:center;text-align:center;
+  padding:26px;font-size:13px;line-height:1.5;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--navy);opacity:.62;
+  background:repeating-linear-gradient(45deg,transparent 0 14px,rgba(255,255,255,.42) 14px 28px);
+}
+.shot.has-img::after{content:none;}
+@media(min-width:760px){ .shot{aspect-ratio:16/10;} }
+/* Tỉ lệ riêng theo nội dung từng ảnh */
+.shot--tall{aspect-ratio:3/4;}                                  /* đàn gà, ảnh dọc  */
+.shot--wide{aspect-ratio:4/3;}                                  /* toàn cảnh trại */
+@media(min-width:760px){
+  .shot--tall{aspect-ratio:4/5;}
+  .shot--wide{aspect-ratio:16/10;}
+}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* ---------- HERO ---------- */
+/* Kiến trúc: ẢNH là một block, COPY là một block. Chữ không đè lên ảnh,
+   không overlay tối, ảnh giữ màu gốc. */
+.hero{padding:0;}
+.hero-photo{
+  width:100%;
+  aspect-ratio:4/3;              /* đúng tỉ lệ ảnh gốc ⇒ mobile KHÔNG cắt gì */
+  background:var(--xanh-nhat);
+  overflow:hidden;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+@media(min-width:900px){
+  /* Desktop: khung rộng hơn nên cắt bớt trời ở trên, giữ trọn đàn gà. */
+  .hero-photo{aspect-ratio:16/9;}
+  .hero-photo img{object-position:center 62%;}
+}
+.hero-copy{
+  position:relative;
+  background:var(--navy);color:#fff;padding:26px 0 32px;text-align:center;
+}
+/* Biên rất nhẹ (biên độ ≈ 4–7px) để ảnh và khối navy đọc ra là
+   MỘT composition hero, không phải hai hình chữ nhật ghép lại.
+   Nhẹ hơn hẳn biên giữa navy và Section 2. */
+.hero-copy::before,
+.pasture-copy::before{
+  content:"";position:absolute;left:0;right:0;top:-7px;height:8px;
+  background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%208%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%2C3.0%20Q82.0%2C4.3%20164%2C4.8%20Q219.5%2C2.5%20275%2C1.3%20Q359.0%2C1.1%20443%2C2.9%20Q533.5%2C4.6%20624%2C1.7%20Q693.5%2C3.6%20763%2C2.3%20Q809.5%2C4.0%20856%2C2.1%20Q959.0%2C3.8%201062%2C4.8%20Q1120.5%2C5.5%201179%2C1.5%20Q1189.5%2C2.5%201200%2C2.9%20L1200%2C8%20L0%2C8%20Z%22%20fill%3D%22%23023059%22%2F%3E%3C%2Fsvg%3E") no-repeat;background-size:100% 100%;
+  pointer-events:none;
+}
+@media(min-width:900px){
+  .hero-copy::before,
+.pasture-copy::before{top:-11px;height:12px;}
+}
+.hero-copy h1{color:#fff;font-size:clamp(29px,9vw,58px);}
+/* Ngắt dòng có kiểm soát: hai cụm là hai khối, trình duyệt chỉ được
+   xuống dòng giữa hai cụm, không cắt bừa trong lòng cụm. */
+.hero-copy h1 .nb{display:inline-block;white-space:nowrap;}
+.hero-copy .lead{color:rgba(255,255,255,.95);margin:14px auto 0;max-width:30em;}
+.hero-copy .cta-row{margin-top:24px;justify-content:center;}
+@media(min-width:900px){
+  .hero-copy{padding:40px 0 46px;text-align:left;}
+  .hero-copy .lead{margin-left:0;margin-right:0;max-width:34em;}
+  .hero-copy .cta-row{justify-content:flex-start;}
+}
+
+/* "4 m²" chỉ nhấn bằng độ đậm, giữ màu trắng như phần còn lại.
+   Không gạch chân, không badge, không highlight — để con số đọc ra
+   như một sự thật chứ không như một nhãn khuyến mãi. */
+.dim{font-weight:700;white-space:nowrap;}
+
+/* ---------- NÚT ---------- */
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px;}
+.btn{
+  display:inline-block;text-decoration:none;font-weight:700;font-size:16px;
+  padding:15px 26px;border-radius:999px;border:2px solid transparent;
+  transition:transform .15s ease,background-color .15s ease,color .15s ease;
+}
+.btn:active{transform:translateY(1px);}
+.btn-primary{background:var(--vang);color:var(--navy);}
+.btn-primary:hover{background:var(--vang-trung);}
+.btn-ghost{border-color:currentColor;background:transparent;}
+.btn-ghost:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
+.hero .btn-ghost{color:#fff;}
+.hero .btn-ghost:hover{background:#fff;color:var(--navy);border-color:#fff;}
+.btn-link{
+  display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  font-weight:700;font-size:16px;color:var(--xanh);
+  border-bottom:2px solid var(--vang);padding-bottom:3px;margin-top:26px;
+}
+.btn-link:hover{color:var(--navy);border-color:var(--navy);}
+.btn-link::after{content:"→";transition:transform .15s ease;}
+.btn-link:hover::after{transform:translateX(3px);}
+
+/* ---------- SECTION 2 ---------- */
+.grid{display:grid;gap:34px;align-items:center;}
+@media(min-width:860px){
+  .grid{grid-template-columns:1fr 1fr;gap:56px;}
+  .grid.flip>*:first-child{order:2;}
+}
+.p-quiet{
+  color:rgba(2,48,89,.84);font-size:16px;max-width:32em;
+  padding-left:16px;border-left:3px solid var(--be);
+}
+.p-loud{font-size:clamp(18px,4.4vw,21px);font-weight:600;max-width:32em;line-height:1.5;}
+
+/* ---------- BIÊN THÔ GIỮA CÁC SECTION ----------
+   Một đường biên không đều, biên độ nhỏ, lấy tinh thần nét vẽ tay trên
+   bao bì Navahi. Mỗi biên là một SVG inline tô đúng màu của section đứng
+   DƯỚI, đặt đè lên một dải mỏng của section phía trên. Không ảnh raster,
+   không chiếm thêm chiều cao, không chắn thao tác. */
+.edge{position:relative;}
+.edge::before{
+  content:"";position:absolute;left:0;right:0;top:-13px;height:14px;
+  background-repeat:no-repeat;background-size:100% 100%;
+  pointer-events:none;
+}
+.edge--nga::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%2014%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%2C5.3%20Q55.5%2C4.1%20111%2C8.1%20Q171.0%2C9.3%20231%2C6.1%20Q270.5%2C0.9%20310%2C7.2%20Q351.0%2C8.2%20392%2C4.1%20Q430.5%2C3.1%20469%2C7.9%20Q517.5%2C1.8%20566%2C1.8%20Q628.5%2C1.6%20691%2C4.4%20Q741.0%2C3.3%20791%2C2.1%20Q853.0%2C7.8%20915%2C1.9%20Q986.0%2C2.1%201057%2C2.4%20Q1106.0%2C5.7%201155%2C5.9%20Q1177.5%2C6.3%201200%2C8.1%20L1200%2C14%20L0%2C14%20Z%22%20fill%3D%22%23F6F3F0%22%2F%3E%3C%2Fsvg%3E");}
+.edge--trang::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%2014%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%2C5.3%20Q55.5%2C4.1%20111%2C8.1%20Q171.0%2C9.3%20231%2C6.1%20Q270.5%2C0.9%20310%2C7.2%20Q351.0%2C8.2%20392%2C4.1%20Q430.5%2C3.1%20469%2C7.9%20Q517.5%2C1.8%20566%2C1.8%20Q628.5%2C1.6%20691%2C4.4%20Q741.0%2C3.3%20791%2C2.1%20Q853.0%2C7.8%20915%2C1.9%20Q986.0%2C2.1%201057%2C2.4%20Q1106.0%2C5.7%201155%2C5.9%20Q1177.5%2C6.3%201200%2C8.1%20L1200%2C14%20L0%2C14%20Z%22%20fill%3D%22%23FFFFFF%22%2F%3E%3C%2Fsvg%3E");}
+.edge--xanh::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%2014%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%2C5.3%20Q55.5%2C4.1%20111%2C8.1%20Q171.0%2C9.3%20231%2C6.1%20Q270.5%2C0.9%20310%2C7.2%20Q351.0%2C8.2%20392%2C4.1%20Q430.5%2C3.1%20469%2C7.9%20Q517.5%2C1.8%20566%2C1.8%20Q628.5%2C1.6%20691%2C4.4%20Q741.0%2C3.3%20791%2C2.1%20Q853.0%2C7.8%20915%2C1.9%20Q986.0%2C2.1%201057%2C2.4%20Q1106.0%2C5.7%201155%2C5.9%20Q1177.5%2C6.3%201200%2C8.1%20L1200%2C14%20L0%2C14%20Z%22%20fill%3D%22%23008AFC%22%2F%3E%3C%2Fsvg%3E");}
+@media(min-width:900px){
+  .edge::before{top:-21px;height:22px;}
+}
+
+/* ---------- SECTION 3 ---------- */
+.band{background:var(--trang);}
+.band{padding:52px 0;}
+.band .lead{margin-top:14px;}
+.prods{display:grid;grid-template-columns:1fr;gap:14px;margin-top:26px;}
+.prod{width:100%;margin:0;}
+.prod img{width:100%;height:auto;border-radius:14px;}
+/* Can bằng visual weight: decal 10 quả là mảng phẳng đậy màu nên thu nhỏ lại;
+   carton 50 có nhiều khoảng trắng quanh hộp nên để tràn. */
+.prod-10{max-width:82%;margin-inline:auto;}
+@media(min-width:760px){
+  .prods{grid-template-columns:1fr 1fr;gap:24px;align-items:center;}
+  .prod-10{max-width:100%;}
+}
+
+/* ---------- SECTION 4 ---------- */
+.strip{display:none;grid-template-columns:1fr;gap:12px;margin-top:26px;}
+.strip.open{display:grid;}
+@media(min-width:700px){ .strip.open{grid-template-columns:repeat(3,1fr);} }
+.strip .shot{aspect-ratio:1/1;border-radius:14px;}
+
+/* ---------- SECTION 5 — CONSUMER CTA ---------- */
+.buy{background:var(--xanh);color:#fff;}
+.buy h2{color:#fff;}
+.buy .lead{color:rgba(255,255,255,.94);}
+.buy .btn-primary{background:var(--vang);color:var(--navy);}
+
+/* ---------- SECTION 5b — DEALER CTA ----------
+   Đường chuyển đổi của đại lý tách hẳn khỏi mặt xanh của khách lẻ:
+   nền trắng ngà như các section kể chuyện, chữ navy, nút navy.
+   Không dùng vàng — vàng dành cho conversion chính. */
+.dealer-sec{background:var(--nga);padding:44px 0;}
+.dealer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;}
+.dealer h3{
+  margin:0;color:var(--navy);font-weight:700;letter-spacing:-.01em;
+  font-size:clamp(19px,4.8vw,24px);
+}
+.dealer .btn{background:var(--navy);color:#fff;padding:13px 24px;font-size:15px;}
+.dealer .btn:hover{background:#001c36;}
+
+/* ---------- FOOTER ---------- */
+.ft{background:var(--navy);color:rgba(255,255,255,.82);padding:52px 0 40px;font-size:15px;}
+.ft b{color:#fff;letter-spacing:.16em;font-size:14px;display:block;}
+.ft p{margin:10px 0 0;}
+.ft a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.45);}
+.ft .fine{margin-top:26px;font-size:13px;opacity:.6;}
+
+/* ---------- MOTION ---------- */
+.rise{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease;}
+.rise.in{opacity:1;transform:none;}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .rise{opacity:1;transform:none;transition:none;}
+  .btn,.btn-link::after{transition:none;}
+}
+:focus-visible{outline:3px solid var(--xanh);outline-offset:3px;border-radius:4px;}
+.buy :focus-visible,.hero :focus-visible{outline-color:var(--vang-trung);}
+
+
+/* ================= V1 — NAVIGATION + TRANG CON ================= */
+
+/* Mục "Mua trứng" trong menu là primary consumer CTA nên tách hẳn
+   khỏi nhóm navigation item thường. */
+.menu a.menu-cta{
+  background:var(--vang);color:var(--navy);
+  border-bottom:0;border-radius:999px;
+  margin:12px 0 6px;padding:14px 18px;text-align:center;font-size:17px;
+}
+.menu a.menu-cta:hover{background:var(--vang-trung);color:var(--navy);}
+.menu a[aria-current="page"]{color:var(--vang);}
+.menu a.menu-cta[aria-current="page"]{color:var(--navy);}
+
+/* Đầu trang con: cùng ngôn ngữ với khối navy của hero trang chủ */
+.page-head{background:var(--navy);color:#fff;padding:38px 0 42px;}
+.page-head h1{color:#fff;font-size:clamp(29px,7.4vw,50px);}
+.page-head .lead{color:rgba(255,255,255,.94);margin-top:14px;max-width:34em;}
+
+/* Khối chỗ trống — đánh dấu rõ để không bị nhầm là nội dung chính thức */
+.ph{
+  border:1.5px dashed rgba(2,48,89,.28);border-radius:14px;
+  padding:20px;margin-top:16px;background:rgba(255,255,255,.5);
+}
+.ph b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(2,48,89,.55);margin-bottom:6px;}
+.ph p{margin:0;color:rgba(2,48,89,.8);font-size:16px;}
+
+/* Danh sách điểm mua */
+.spots{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}
+@media(min-width:760px){ .spots{grid-template-columns:1fr 1fr;} }
+.spot{background:#fff;border-radius:14px;padding:18px 20px;}
+.spot h3{margin:0 0 6px;font-size:18px;color:var(--navy);}
+.spot p{margin:0;font-size:15px;color:rgba(2,48,89,.8);}
+.empty{
+  background:#fff;border-radius:16px;padding:24px;margin-top:24px;
+}
+.empty p{margin:0;color:rgba(2,48,89,.85);}
+.empty .cta-row{margin-top:20px;}
+.btn-navy{background:var(--navy);color:#fff;}
+.btn-navy:hover{background:#001c36;}
+
+
+/* ================= SECTION EDUCATION — BA HỆ THỐNG NUÔI =================
+   Ba khối xếp dọc để khách cuộn qua lần lượt ba môi trường sống.
+   Ảnh làm phần lớn việc giải thích; chữ ngắn, trung tính. */
+.edu .sys + .sys{margin-top:40px;}
+.sys-photo{width:100%;border-radius:16px;overflow:hidden;background:var(--xanh-nhat);}
+.sys-photo img{width:100%;height:auto;display:block;}   /* mobile: không cắt gì */
+.sys h2{margin-top:20px;font-size:clamp(24px,5.6vw,34px);}
+.sys p{max-width:32em;}
+@media(min-width:900px){
+  .edu .wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
+  .edu .sys + .sys{margin-top:0;}
+  /* desktop: cố định khung để hai cột thẳng hàng, cắt rất nhẹ */
+  .sys-photo{aspect-ratio:16/10;}
+  .sys-photo img{height:100%;object-fit:cover;}
+}
+
+/* ---- Khối payoff: Navahi chọn chăn thả tự do ----
+   Lặp lại đúng nhịp của hero — ẢNH rồi đến KHỐI NAVY — để người đọc
+   nhận ra ngay đây là lựa chọn của Navahi chứ không phải một hệ thống nữa. */
+.pasture{padding:0;}
+.pasture-photo{width:100%;background:var(--xanh-nhat);overflow:hidden;}
+.pasture-photo img{width:100%;height:auto;display:block;}
+@media(min-width:900px){
+  /* Ảnh gốc là ảnh dọc ⇒ trên màn rộng phải khống chế chiều cao,
+     đồng thời kéo điểm nhìn xuống để giữ trọn dải đàn gà trên thảm cỏ. */
+  .pasture-photo{height:min(58vh,560px);}
+  .pasture-photo img{height:100%;object-fit:cover;object-position:center 62%;}
+}
+.pasture-copy{position:relative;background:var(--navy);color:#fff;padding:30px 0 36px;}
+.pasture-copy h2{color:#fff;}
+.pasture-copy .metric{
+  margin-top:16px;color:#fff;font-weight:700;
+  font-size:clamp(21px,5.4vw,30px);line-height:1.25;max-width:18em;
+}
+.pasture-copy .sub{color:rgba(255,255,255,.9);margin-top:12px;max-width:32em;}
+.pasture-copy .btn-link{color:#fff;border-color:var(--vang);}
+.pasture-copy .btn-link:hover{color:var(--vang);border-color:var(--vang);}
+@media(min-width:900px){
+  .pasture-copy{padding:42px 0 48px;}
+}

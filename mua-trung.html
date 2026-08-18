@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mua trứng Navahi — Navahi Farms</title>
+<meta name="description" content="Tìm cách mua trứng Navahi thuận tiện nhất tại khu vực của bạn.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mua trứng Navahi — Navahi Farms">
+<meta property="og:description" content="Tìm cách mua trứng Navahi thuận tiện nhất tại khu vực của bạn.">
+<meta property="og:image" content="https://navahifarms.vn/assets/hero.webp">
+<meta property="og:locale" content="vi_VN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#008AFC">
+<link rel="stylesheet" href="navahi.css">
+</head>
+<body>
+
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="mark" href="index.html">
+      <span class="wordmark" role="img" aria-label="Navahi Farms"></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Mở menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="menu" id="menu" aria-label="Điều hướng">
+    <a href="index.html">Trang chủ</a>
+    <a href="trung-navahi.html">Trứng Navahi</a>
+    <a href="cach-nuoi-ga.html">Cách Navahi nuôi gà</a>
+    <a class="menu-cta" href="mua-trung.html" aria-current="page">Mua trứng</a>
+    <a href="dai-ly.html">Trở thành đại lý</a>
+  </nav>
+</header>
+
+<main>
+  <section class="page-head">
+    <div class="wrap">
+      <h1 class="rise">Tìm trứng Navahi gần bạn</h1>
+      <p class="lead rise">Nhắn cho Navahi để tìm cách mua trứng thuận tiện nhất tại khu vực của bạn.</p>
+    </div>
+  </section>
+
+  <section class="sec edge edge--nga">
+    <div class="wrap">
+      <div id="spots"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+/* ------------------------------------------------------------------
+   DANH SÁCH ĐIỂM MUA — PO điền vào mảng dưới đây khi có dữ liệu thật.
+   Mỗi mục: { ten: "", khu_vuc: "", ghi_chu: "" }
+   Để trống ⇒ trang tự hiển thị trạng thái "đang cập nhật" + kênh liên hệ.
+   KHÔNG điền tên/địa chỉ nếu chưa xác nhận với đại lý.
+   ------------------------------------------------------------------ */
+var NAVAHI_DIEM_MUA = [];
+
+(function(){
+  var box = document.getElementById('spots');
+  if(!box) return;
+  if(NAVAHI_DIEM_MUA.length){
+    var g = document.createElement('div');
+    g.className = 'spots';
+    NAVAHI_DIEM_MUA.forEach(function(d){
+      var c = document.createElement('div');
+      c.className = 'spot';
+      var h = document.createElement('h3'); h.textContent = d.ten || '';
+      var p = document.createElement('p');
+      p.textContent = [d.khu_vuc, d.ghi_chu].filter(Boolean).join(' · ');
+      c.appendChild(h); c.appendChild(p); g.appendChild(c);
+    });
+    box.appendChild(g);
+  } else {
+    box.innerHTML =
+      '<div class="empty">' +
+      '<p>Danh sách điểm bán đang được cập nhật. Nhắn cho Navahi để được chỉ cách mua tại khu vực của bạn.</p>' +
+      '<div class="cta-row">' +
+      '<a class="btn btn-primary" href="https://zalo.me/0868887890" target="_blank" rel="noopener">Nhắn Zalo</a>' +
+      '<a class="btn btn-navy" href="tel:0868887890">Gọi 086.888.7890</a>' +
+      '</div></div>';
+  }
+})();
+</script>
+
+<footer class="ft">
+  <div class="wrap">
+    <b>NAVAHI FARMS</b>
+    <p>Trứng gà chăn thả tự do</p>
+    <p>Tân Lạc, Phú Thọ, Việt Nam</p>
+    <p>Hotline / Zalo: <a href="tel:0868887890">086.888.7890</a></p>
+    <p><a href="https://navahifarms.vn">www.navahifarms.vn</a></p>
+    <p class="fine">© 2026 Navahi Farms</p>
+  </div>
+</footer>
+<script src="navahi.js"></script>
+</body>
+</html>
