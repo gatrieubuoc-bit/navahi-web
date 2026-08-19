@@ -83,7 +83,7 @@ a{color:inherit;}
   background:var(--navy);
   display:none;padding:6px var(--pad) 16px;
 }
-.hdr.menu-open .menu{display:block;}
+.hdr.menu-open .menu{display:flex;flex-direction:column;}
 .menu a{
   display:block;color:#fff;text-decoration:none;
   font-size:17.5px;font-weight:600;line-height:1.35;padding:13px 0;
@@ -318,9 +318,14 @@ p{margin:18px 0 0;}
 /* Mục "Mua trứng" trong menu là primary consumer CTA nên tách hẳn
    khỏi nhóm navigation item thường. */
 .menu a.menu-cta{
+  /* CTA điều hướng, không phải conversion block của trang:
+     gọn hơn các mục menu nhưng vẫn đủ để nhận ra là một hành động.
+     Vùng chạm giữ ≥ 44px bằng min-height chứ không bằng padding. */
+  display:flex;align-items:center;justify-content:center;
+  align-self:flex-start;width:auto;min-height:44px;
   background:var(--vang);color:var(--navy);
   border-bottom:0;border-radius:999px;
-  margin:12px 0 6px;padding:14px 18px;text-align:center;font-size:17px;
+  margin:14px 0 8px;padding:8px 20px;font-size:15.5px;
 }
 .menu a.menu-cta:hover{background:var(--vang-trung);color:var(--navy);}
 .menu a[aria-current="page"]{color:var(--vang);}
@@ -393,6 +398,8 @@ p{margin:18px 0 0;}
   }
   .pasture-photo img{height:100%;object-fit:cover;object-position:center 58%;}
   .pasture-copy{order:1;background:none;padding:0;}
+  /* cột chữ hẹp hơn ở 1024 ⇒ co metric theo bề ngang để không rơi chữ mồ côi */
+  .pasture .pasture-copy .metric{font-size:clamp(24px,2.3vw,30px);}
   .pasture-copy::before{content:none;}       /* hết ranh giới ảnh→navy nên bỏ biên */
   .pasture-copy .wrap{max-width:none;padding:0;}
 }
