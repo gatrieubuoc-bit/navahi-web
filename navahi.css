@@ -144,10 +144,28 @@ p{margin:18px 0 0;}
   overflow:hidden;
 }
 .hero-photo img{width:100%;height:100%;object-fit:cover;display:block;}
-@media(min-width:900px){
-  /* Desktop: khung rộng hơn nên cắt bớt trời ở trên, giữ trọn đàn gà. */
-  .hero-photo{aspect-ratio:16/9;}
-  .hero-photo img{object-position:center 62%;}
+/* ── DESKTOP: hero 2 cột ──
+   Ảnh gốc là 4:3, không đủ ngang để chạy full-width trên màn rộng mà
+   không cắt mạnh. Đặt ảnh vào một cột có đúng tỉ lệ 4:3 thì crop = 0,
+   đồng thời hero đọc ra là một bố cục ngang thay vì hai tầng xếp dọc. */
+@media(min-width:1024px){
+  .hero{display:grid;grid-template-columns:55fr 45fr;align-items:stretch;}
+  .hero > *{min-width:0;}
+  .hero .hero-photo{aspect-ratio:3/2;height:auto;max-height:560px;}
+  .hero .hero-photo img{object-position:center 62%;}
+  .hero .hero-copy{
+    display:flex;align-items:center;
+    padding:40px clamp(48px,4vw,64px);
+    text-align:left;
+  }
+  .hero .hero-copy::before{content:none;}    /* hết ranh giới ảnh→navy theo chiều dọc */
+  .hero .hero-copy .wrap{max-width:none;padding:0;width:100%;}
+  /* Nhóm chữ là MỘT khối, canh giữa panel và nhích nhẹ lên trên tâm */
+  .hero .hero-copy .hero-group{max-width:32em;margin-bottom:3%;}
+  .hero .hero-copy h1{font-size:clamp(32px,2.8vw,44px);}
+  .hero .hero-copy .lead{margin:22px 0 0;max-width:none;font-size:clamp(17px,1.4vw,20px);line-height:1.45;}
+  .hero .hero-copy .lead-proof{margin-top:16px;font-size:clamp(16px,1.3vw,19px);line-height:1.5;}
+  .hero .hero-copy .cta-row{justify-content:flex-start;margin-top:30px;}
 }
 .hero-copy{
   position:relative;
@@ -173,7 +191,7 @@ p{margin:18px 0 0;}
 .hero-copy .lead{color:rgba(255,255,255,.95);margin:14px auto 0;max-width:30em;}
 .hero-copy .cta-row{margin-top:24px;justify-content:center;}
 @media(min-width:900px){
-  .hero-copy{padding:40px 0 46px;text-align:left;}
+  .hero-copy{padding:33px 0 38px;text-align:left;}
   .hero-copy .lead{margin-left:0;margin-right:0;max-width:34em;}
   .hero-copy .cta-row{justify-content:flex-start;}
 }
@@ -361,10 +379,22 @@ p{margin:18px 0 0;}
 .pasture-photo{width:100%;background:var(--xanh-nhat);overflow:hidden;}
 .pasture-photo img{width:100%;height:auto;display:block;}
 @media(min-width:900px){
-  /* Ảnh gốc là ảnh dọc ⇒ trên màn rộng phải khống chế chiều cao,
-     đồng thời kéo điểm nhìn xuống để giữ trọn dải đàn gà trên thảm cỏ. */
-  .pasture-photo{height:min(58vh,560px);}
-  .pasture-photo img{height:100%;object-fit:cover;object-position:center 62%;}
+  /* Desktop: chuyển thành section 2 cột kiểu editorial — chữ trái, ảnh phải.
+     Ảnh giữ khung 4:3 nên không bị bóp thành băng ngang thấp, vẫn thấy
+     được cả đàn gà và chiều sâu khu vườn. */
+  .pasture{
+    background:var(--navy);
+    display:grid;grid-template-columns:45fr 55fr;gap:44px;align-items:center;
+    padding:52px max(var(--pad),calc((100% - var(--wrap))/2)) 58px;
+  }
+  .pasture-photo{
+    order:2;height:auto;aspect-ratio:4/3;
+    border-radius:16px;background:transparent;
+  }
+  .pasture-photo img{height:100%;object-fit:cover;object-position:center 58%;}
+  .pasture-copy{order:1;background:none;padding:0;}
+  .pasture-copy::before{content:none;}       /* hết ranh giới ảnh→navy nên bỏ biên */
+  .pasture-copy .wrap{max-width:none;padding:0;}
 }
 .pasture-copy{position:relative;background:var(--navy);color:#fff;padding:30px 0 36px;}
 .pasture-copy h2{color:#fff;}
@@ -419,4 +449,23 @@ p{margin:18px 0 0;}
 }
 @media(min-width:760px){
   .arch{grid-template-columns:1fr 1fr;gap:18px;}
+}
+
+/* Dòng "cửa mở" trên trang đại lý: là một lựa chọn hợp lệ nhưng
+   nhẹ hơn hai nhóm lý tưởng — không đóng thành thẻ, không in đậm. */
+.open-door{
+  position:relative;margin-top:18px;padding-left:22px;
+  color:rgba(2,48,89,.84);max-width:32em;
+}
+.open-door::before{
+  content:"";position:absolute;left:2px;top:11px;
+  width:8px;height:8px;border-radius:50%;background:var(--vang);
+}
+@media(min-width:900px){
+  /* Bỏ thẻ thứ ba nên siết lại nhịp dọc của section */
+  .dealer-qual{padding:52px 0;}
+  .dealer-qual .arch{margin-top:20px;}
+  .dealer-qual .open-door{margin-top:22px;}
+  .dealer-qual .lead{margin-top:16px;}
+  .dealer-qual .cta-row{margin-top:26px;}
 }
