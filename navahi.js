@@ -1,19 +1,4 @@
 /* Navahi Farms — script dùng chung cho mọi trang */
-(function(){
-  var css = getComputedStyle(document.documentElement);
-  function src(name){
-    var m = css.getPropertyValue('--img-' + name).trim().match(/url\(["']?(.*?)["']?\)/);
-    return m ? m[1] : null;
-  }
-  /* Ảnh khai báo bằng biến CSS ⇒ thay ảnh chỉ cần sửa một dòng trong navahi.css */
-  document.querySelectorAll('[data-img]').forEach(function(el){
-    var u = src(el.dataset.img), img = el.querySelector('img');
-    if(u && img){ img.src = u; el.classList.add('has-img'); }
-    else if(!u && el.classList.contains('prod')){ el.remove(); }
-  });
-  var hero = document.getElementById('hero-img');
-  if(hero && src('hero')){ hero.src = src('hero'); }
-})();
 
 /* Hamburger menu */
 (function(){

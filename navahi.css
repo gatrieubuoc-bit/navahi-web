@@ -1,18 +1,9 @@
 /* ==========================================================================
-   NAVAHI FARMS — LANDING v0.1 (staging)
+   NAVAHI FARMS — WEBSITE V1
    --------------------------------------------------------------------------
-   SWAP ẢNH: chỉ sửa 6 dòng --img-* ngay dưới đây. Không cần đụng chỗ nào khác.
-   Khi chưa có ảnh, để nguyên "none" -> slot hiện khung placeholder có nhãn.
+   Ảnh khai báo trực tiếp trong HTML bằng src + srcset (không qua CSS/JS).
    ========================================================================== */
 :root{
-  --img-hero: url("assets/hero.webp");
-  --img-nuoi: url("assets/nuoi.webp");
-  --img-long: url("assets/nuoi-long.webp");
-  --img-nen:  url("assets/nuoi-nen.webp");
-  --img-pack-10: url("assets/pack10.webp");
-  --img-pack-50: url("assets/pack50.webp");
-  --img-trai: url("assets/trai.webp");
-
   /* Bảng màu Navahi — 9 mã đã khoá (ND-002). Không thêm màu ngoài bảng này. */
   --vang:      #FABD03;
   --vang-trung:#FFD21B;
@@ -123,14 +114,6 @@ p{margin:18px 0 0;}
   background-size:cover;background-position:center;
   aspect-ratio:4/5;
 }
-.shot::after{
-  content:attr(data-label);
-  position:absolute;inset:0;display:grid;place-items:center;text-align:center;
-  padding:26px;font-size:13px;line-height:1.5;letter-spacing:.06em;
-  text-transform:uppercase;color:var(--navy);opacity:.62;
-  background:repeating-linear-gradient(45deg,transparent 0 14px,rgba(255,255,255,.42) 14px 28px);
-}
-.shot.has-img::after{content:none;}
 @media(min-width:760px){ .shot{aspect-ratio:16/10;} }
 /* Tỉ lệ riêng theo nội dung từng ảnh */
 .shot--tall{aspect-ratio:3/4;}                                  /* đàn gà, ảnh dọc  */

@@ -3,14 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Navahi Farms — Trứng gà chăn thả tự do</title>
+<title>Navahi Farms | Trứng gà chăn thả tự do</title>
 <meta name="description" content="Navahi dành tối thiểu 4 m² cho mỗi con gà. Trứng gà chăn thả tự do, đóng gói ngay tại trang trại.">
+<link rel="canonical" href="https://navahifarms.vn/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Navahi Farms — Trứng gà chăn thả tự do">
+<meta property="og:url" content="https://navahifarms.vn/">
+<meta property="og:title" content="Navahi Farms | Trứng gà chăn thả tự do">
 <meta property="og:description" content="Navahi dành tối thiểu 4 m² cho mỗi con gà. Trứng gà chăn thả tự do, đóng gói ngay tại trang trại.">
 <meta property="og:image" content="https://navahifarms.vn/assets/hero.webp">
 <meta property="og:locale" content="vi_VN">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#008AFC">
 <link rel="stylesheet" href="navahi.css">
 </head>
@@ -39,7 +44,10 @@
   <!-- ============ 1 — HERO ============ -->
   <section class="hero">
     <div class="hero-photo">
-      <img id="hero-img" width="1360" height="1020" fetchpriority="high" decoding="async"
+      <img src="assets/hero.webp"
+           srcset="assets/hero-760.webp 760w, assets/hero.webp 1360w"
+           sizes="(min-width:1024px) 55vw, 100vw"
+           width="1360" height="1020" fetchpriority="high" decoding="async"
            alt="Đàn gà mái Navahi đang cúi kiếm ăn trên nền đất, phía sau là thảm thực vật và đồi núi">
     </div>
     <div class="hero-copy">
@@ -65,8 +73,11 @@
         <p class="p-loud rise">Trứng Navahi đến từ những đàn gà mái được tự do đi lại, bới tìm và kiếm ăn trên thảm thực vật thật.</p>
         <a class="btn-link rise" href="cach-nuoi-ga.html">Vì sao trứng Navahi khác</a>
       </div>
-      <div class="shot shot--tall rise" data-img="nuoi">
-        <img alt="Đàn gà mái Navahi đi lại và kiếm ăn trên thảm thực vật dưới tán cây"
+      <div class="shot shot--tall has-img rise">
+        <img src="assets/nuoi.webp"
+             srcset="assets/nuoi-560.webp 560w, assets/nuoi.webp 820w"
+             sizes="(min-width:860px) 45vw, 100vw"
+             alt="Đàn gà mái Navahi đi lại và kiếm ăn trên thảm thực vật dưới tán cây"
              width="820" height="1093" loading="lazy" decoding="async">
       </div>
     </div>
@@ -78,11 +89,19 @@
       <h2 class="rise">Trứng Navahi</h2>
       <p class="lead rise">Trứng gà chăn thả tự do Navahi được đóng gói hộp 10 quả và 50 quả.</p>
       <div class="prods">
-        <figure class="prod prod-10 rise" data-img="pack-10">
-          <img alt="Hộp trứng Navahi 10 quả">
+        <figure class="prod prod-10 rise">
+          <img src="assets/pack10.webp"
+               srcset="assets/pack10-700.webp 700w, assets/pack10.webp 900w"
+               sizes="(min-width:760px) 46vw, 100vw"
+               alt="Hộp trứng Navahi 10 quả"
+               width="900" height="507" loading="lazy" decoding="async">
         </figure>
-        <figure class="prod rise" data-img="pack-50">
-          <img alt="Thùng trứng Navahi 50 quả">
+        <figure class="prod rise">
+          <img src="assets/pack50.webp"
+               srcset="assets/pack50-640.webp 640w, assets/pack50.webp 820w"
+               sizes="(min-width:760px) 46vw, 100vw"
+               alt="Thùng trứng Navahi 50 quả"
+               width="820" height="656" loading="lazy" decoding="async">
         </figure>
       </div>
     </div>
@@ -96,8 +115,12 @@
         <p class="lead rise">Trứng Navahi được thu nhặt và đóng gói ngay tại trang trại, với ngày đóng gói được ghi trên từng hộp để bạn có thể kiểm tra khi nhận trứng.</p>
         <a class="btn-link rise" href="#trang-trai" id="btn-trai">Xem trang trại Navahi</a>
       </div>
-      <div class="shot shot--wide rise" data-img="trai" data-label="Ảnh: toàn cảnh trang trại Navahi">
-        <img alt="Toàn cảnh trang trại Navahi nhìn từ trên cao, đường đất dẫn vào khu trại giữa vùng đồi núi" width="1300" height="975" loading="lazy" decoding="async">
+      <div class="shot shot--wide has-img rise">
+        <img src="assets/trai.webp"
+             srcset="assets/trai-760.webp 760w, assets/trai.webp 1300w"
+             sizes="(min-width:860px) 45vw, 100vw"
+             alt="Toàn cảnh trang trại Navahi nhìn từ trên cao, đường đất dẫn vào khu trại giữa vùng đồi núi"
+             width="1300" height="975" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
