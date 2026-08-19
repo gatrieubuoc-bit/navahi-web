@@ -395,3 +395,28 @@ p{margin:18px 0 0;}
   color:rgba(255,255,255,.88);
 }
 .hero-copy .lead-proof .nb{display:inline-block;white-space:nowrap;}
+
+/* ================= TRANG ĐẠI LÝ ================= */
+/* Hero gọn hơn các trang khác vì Section 1 nằm ngay dưới */
+.page-head--slim{padding:30px 0 34px;}
+@media(min-width:900px){ .page-head--slim{padding:38px 0 42px;} }
+
+/* Nhấn khái niệm: chỉ bằng độ đậm, giữ nguyên màu chữ */
+.em{font-weight:700;color:inherit;}
+
+.fit-label{margin-top:26px;font-weight:600;color:var(--navy);}
+
+/* Hai nhóm đại lý — giữ dạng danh sách để đọc ra là HAI lựa chọn
+   độc lập, không phải hai điều kiện phải có đồng thời. */
+.arch{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:14px;}
+.arch li{
+  position:relative;background:#fff;border-radius:14px;
+  padding:18px 20px 18px 42px;font-size:16px;line-height:1.55;color:var(--navy);
+}
+.arch li::before{
+  content:"";position:absolute;left:20px;top:26px;
+  width:10px;height:10px;border-radius:50%;background:var(--vang);
+}
+@media(min-width:760px){
+  .arch{grid-template-columns:1fr 1fr;gap:18px;}
+}
