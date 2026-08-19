@@ -469,3 +469,11 @@ p{margin:18px 0 0;}
   .dealer-qual .lead{margin-top:16px;}
   .dealer-qual .cta-row{margin-top:26px;}
 }
+
+/* Hero sub-page chỉ còn một câu thesis — không còn cặp tiêu đề + mô tả
+   nên siết chiều cao lại, tránh hụt một mảng navy trống. */
+.page-head--solo{padding:32px 0 36px;}
+.page-head--solo h1{font-size:clamp(26px,6.4vw,42px);max-width:22em;}
+@media(min-width:900px){
+  .page-head--solo{padding:44px 0 48px;}
+}
