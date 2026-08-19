@@ -84,6 +84,14 @@ a{color:inherit;}
   display:none;padding:6px var(--pad) 16px;
 }
 .hdr.menu-open .menu{display:flex;flex-direction:column;}
+/* Khi menu mở, header xanh + menu navy đọc như MỘT lớp điều hướng.
+   Vạch vàng — vẫn là đúng vạch dưới header — chuyển xuống đáy menu
+   để đánh dấu chỗ điều hướng kết thúc và nội dung trang bắt đầu.
+   Không bao giờ có hai vạch cùng lúc. */
+@media(max-width:899px){
+  .hdr.menu-open{border-bottom-color:var(--xanh);}
+  .hdr.menu-open .menu{border-bottom:3px solid var(--vang);}
+}
 .menu a{
   display:block;color:#fff;text-decoration:none;
   font-size:17.5px;font-weight:600;line-height:1.35;padding:13px 0;
