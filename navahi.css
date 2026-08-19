@@ -473,7 +473,14 @@ p{margin:18px 0 0;}
 /* Hero sub-page chỉ còn một câu thesis — không còn cặp tiêu đề + mô tả
    nên siết chiều cao lại, tránh hụt một mảng navy trống. */
 .page-head--solo{padding:44px 0 50px;}
-.page-head--solo h1{font-size:clamp(24px,6.5vw,42px);max-width:16em;}
+.page-head--solo h1{
+  font-size:clamp(28px,7.4vw,42px);   /* mạnh hơn câu hỏi so sánh phía dưới */
+  line-height:1.14;max-width:10em;
+}
+/* Câu hỏi so sánh là heading cấp 2 — trên mobile phải nhỏ hơn hero thesis */
+@media(max-width:899px){
+  .edu .wrap-head h2{font-size:clamp(23px,5.9vw,27px);}
+}
 @media(min-width:900px){
   .page-head--solo{padding:44px 0 48px;}
   .page-head--solo h1{max-width:17em;}
