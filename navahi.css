@@ -378,3 +378,20 @@ p{margin:18px 0 0;}
 @media(min-width:900px){
   .pasture-copy{padding:42px 0 48px;}
 }
+
+/* CTA sau khối payoff: siết khoảng trắng trên mobile để chuỗi
+   kết luận → hành động đọc liền mạch. Desktop giữ nguyên nhịp cũ. */
+@media(max-width:899px){
+  .sec-cta{padding:44px 0;}
+  .sec-cta .cta-row{margin-top:14px;}
+}
+
+/* Hero có hai câu: triết lý trước, bằng chứng 4 m² sau.
+   Câu sau nhỏ hơn một bậc để khối hero không nặng thêm,
+   nhưng "4 m²" vẫn giữ nguyên độ đậm. */
+.hero-copy .lead-proof{
+  margin-top:10px;
+  font-size:clamp(15.5px,3.9vw,18px);
+  color:rgba(255,255,255,.88);
+}
+.hero-copy .lead-proof .nb{display:inline-block;white-space:nowrap;}
