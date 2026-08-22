@@ -1,0 +1,36 @@
+NAVAHI FARMS — WEBSITE V1 — BỘ FULL
+Ngày xuất: 2026-08-22
+
+CÁCH DÙNG
+1. Xoá TOÀN BỘ file cũ trong repo gatrieubuoc-bit/navahi-web
+2. Upload toàn bộ nội dung bộ này lên, giữ nguyên cấu trúc thư mục
+   (assets/ phải nằm trong thư mục con tên đúng là "assets")
+3. Commit. Vercel tự deploy.
+
+CẤU TRÚC
+  gốc repo/
+    index.html            trang chủ
+    cach-nuoi-ga.html     Vì sao trứng Navahi khác
+    trung-navahi.html     Trứng Navahi
+    mua-trung.html        Mua trứng
+    dai-ly.html           Trở thành đại lý
+    navahi.css            toàn bộ style
+    navahi.js             menu, hiệu ứng cuộn, carousel
+    sitemap.xml
+    robots.txt
+    favicon.ico
+    favicon-32.png
+    apple-touch-icon.png
+    assets/               17 file ảnh
+
+KHÁC BIỆT SO VỚI BẢN ĐANG CHẠY TRÊN main
+  index.html   — section 4 chuyển thành carousel 2 ảnh
+  navahi.css   — hero đổi nền navy sang vàng; thêm khối style carousel
+  navahi.js    — thêm đoạn điều khiển carousel
+  assets/dong-goi.webp      MỚI  1300x975
+  assets/dong-goi-760.webp  MỚI  760x570
+  24 file còn lại giữ nguyên, đã đối chiếu checksum khớp 100% với main
+
+KHÔNG ĐỔI
+  copy, heading, metadata, canonical, sitemap, robots, favicon,
+  địa chỉ footer, navigation, trang đại lý, các trang con.

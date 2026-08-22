@@ -115,12 +115,26 @@
         <p class="lead rise">Trứng Navahi được thu nhặt và đóng gói ngay tại trang trại, với ngày đóng gói được ghi trên từng hộp để bạn có thể kiểm tra khi nhận trứng.</p>
         <a class="btn-link rise" href="#trang-trai" id="btn-trai">Xem trang trại Navahi</a>
       </div>
-      <div class="shot shot--wide has-img rise">
-        <img src="assets/trai.webp"
-             srcset="assets/trai-760.webp 760w, assets/trai.webp 1300w"
-             sizes="(min-width:860px) 45vw, 100vw"
-             alt="Toàn cảnh trang trại Navahi nhìn từ trên cao, đường đất dẫn vào khu trại giữa vùng đồi núi"
-             width="1300" height="975" loading="lazy" decoding="async">
+      <div class="shot shot--wide has-img rise slider" data-slider>
+        <div class="slider-track">
+          <img src="assets/trai.webp"
+               srcset="assets/trai-760.webp 760w, assets/trai.webp 1300w"
+               sizes="(min-width:860px) 45vw, 100vw"
+               alt="Toàn cảnh trang trại Navahi nhìn từ trên cao, đường đất dẫn vào khu trại giữa vùng đồi núi"
+               width="1300" height="975" loading="lazy" decoding="async">
+          <img src="assets/dong-goi.webp"
+               srcset="assets/dong-goi-760.webp 760w, assets/dong-goi.webp 1300w"
+               sizes="(min-width:860px) 45vw, 100vw"
+               alt="Những khay trứng Navahi vừa thu nhặt, xếp chồng tại khu đóng gói của trang trại"
+               width="1300" height="975" loading="lazy" decoding="async"
+               style="object-position:center 42%">
+        </div>
+        <button class="slider-nav slider-prev" type="button" aria-label="Ảnh trước"></button>
+        <button class="slider-nav slider-next" type="button" aria-label="Ảnh tiếp theo"></button>
+        <div class="slider-dots">
+          <button type="button" class="on" aria-label="Ảnh 1: toàn cảnh trang trại"></button>
+          <button type="button" aria-label="Ảnh 2: khay trứng tại khu đóng gói"></button>
+        </div>
       </div>
     </div>
   </section>

@@ -160,7 +160,7 @@ p{margin:18px 0 0;}
 }
 .hero-copy{
   position:relative;
-  background:var(--navy);color:#fff;padding:26px 0 32px;text-align:center;
+  background:var(--vang);color:var(--navy);padding:26px 0 32px;text-align:center;
 }
 /* Biên rất nhẹ (biên độ ≈ 4–7px) để ảnh và khối navy đọc ra là
    MỘT composition hero, không phải hai hình chữ nhật ghép lại.
@@ -168,18 +168,21 @@ p{margin:18px 0 0;}
 .hero-copy::before,
 .pasture-copy::before{
   content:"";position:absolute;left:0;right:0;top:-7px;height:8px;
-  background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%208%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%2C3.0%20Q82.0%2C4.3%20164%2C4.8%20Q219.5%2C2.5%20275%2C1.3%20Q359.0%2C1.1%20443%2C2.9%20Q533.5%2C4.6%20624%2C1.7%20Q693.5%2C3.6%20763%2C2.3%20Q809.5%2C4.0%20856%2C2.1%20Q959.0%2C3.8%201062%2C4.8%20Q1120.5%2C5.5%201179%2C1.5%20Q1189.5%2C2.5%201200%2C2.9%20L1200%2C8%20L0%2C8%20Z%22%20fill%3D%22%23023059%22%2F%3E%3C%2Fsvg%3E") no-repeat;background-size:100% 100%;
+  background-repeat:no-repeat;background-size:100% 100%;
   pointer-events:none;
 }
+/* Biên của hero đi theo nền vàng; các khối navy khác giữ nguyên. */
+.hero-copy::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%208%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%2C3.0%20Q82.0%2C4.3%20164%2C4.8%20Q219.5%2C2.5%20275%2C1.3%20Q359.0%2C1.1%20443%2C2.9%20Q533.5%2C4.6%20624%2C1.7%20Q693.5%2C3.6%20763%2C2.3%20Q809.5%2C4.0%20856%2C2.1%20Q959.0%2C3.8%201062%2C4.8%20Q1120.5%2C5.5%201179%2C1.5%20Q1189.5%2C2.5%201200%2C2.9%20L1200%2C8%20L0%2C8%20Z%22%20fill%3D%22%23FABD03%22%2F%3E%3C%2Fsvg%3E");}
+.pasture-copy::before{background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%208%22%20preserveAspectRatio%3D%22none%22%3E%3Cpath%20d%3D%22M0%2C3.0%20Q82.0%2C4.3%20164%2C4.8%20Q219.5%2C2.5%20275%2C1.3%20Q359.0%2C1.1%20443%2C2.9%20Q533.5%2C4.6%20624%2C1.7%20Q693.5%2C3.6%20763%2C2.3%20Q809.5%2C4.0%20856%2C2.1%20Q959.0%2C3.8%201062%2C4.8%20Q1120.5%2C5.5%201179%2C1.5%20Q1189.5%2C2.5%201200%2C2.9%20L1200%2C8%20L0%2C8%20Z%22%20fill%3D%22%23023059%22%2F%3E%3C%2Fsvg%3E");}
 @media(min-width:900px){
   .hero-copy::before,
 .pasture-copy::before{top:-11px;height:12px;}
 }
-.hero-copy h1{color:#fff;font-size:clamp(29px,9vw,58px);}
+.hero-copy h1{color:var(--navy);font-size:clamp(29px,9vw,58px);}
 /* Ngắt dòng có kiểm soát: hai cụm là hai khối, trình duyệt chỉ được
    xuống dòng giữa hai cụm, không cắt bừa trong lòng cụm. */
 .hero-copy h1 .nb{display:inline-block;white-space:nowrap;}
-.hero-copy .lead{color:rgba(255,255,255,.95);margin:14px auto 0;max-width:30em;}
+.hero-copy .lead{color:var(--navy);margin:14px auto 0;max-width:30em;}
 .hero-copy .cta-row{margin-top:24px;justify-content:center;}
 @media(min-width:900px){
   .hero-copy{padding:33px 0 38px;text-align:left;}
@@ -204,8 +207,11 @@ p{margin:18px 0 0;}
 .btn-primary:hover{background:var(--vang-trung);}
 .btn-ghost{border-color:currentColor;background:transparent;}
 .btn-ghost:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
-.hero .btn-ghost{color:#fff;}
-.hero .btn-ghost:hover{background:#fff;color:var(--navy);border-color:#fff;}
+/* Hero nền vàng: nút đảo lại thành nền navy chữ vàng. */
+.hero .btn-primary{background:var(--navy);color:var(--vang);}
+.hero .btn-primary:hover{background:#03406f;color:var(--vang-trung);}
+.hero .btn-ghost{color:var(--navy);}
+.hero .btn-ghost:hover{background:var(--navy);color:var(--vang);border-color:var(--navy);}
 .btn-link{
   display:inline-flex;align-items:center;gap:8px;text-decoration:none;
   font-weight:700;font-size:16px;color:var(--xanh);
@@ -301,7 +307,8 @@ p{margin:18px 0 0;}
   .btn,.btn-link::after{transition:none;}
 }
 :focus-visible{outline:3px solid var(--xanh);outline-offset:3px;border-radius:4px;}
-.buy :focus-visible,.hero :focus-visible{outline-color:var(--vang-trung);}
+.buy :focus-visible{outline-color:var(--vang-trung);}
+.hero :focus-visible{outline-color:var(--navy);}
 
 
 /* ================= V1 — NAVIGATION + TRANG CON ================= */
@@ -420,7 +427,7 @@ p{margin:18px 0 0;}
 .hero-copy .lead-proof{
   margin-top:10px;
   font-size:clamp(15.5px,3.9vw,18px);
-  color:rgba(255,255,255,.88);
+  color:rgba(2,48,89,.88);
 }
 .hero-copy .lead-proof .nb{display:inline-block;white-space:nowrap;}
 
@@ -493,3 +500,54 @@ p{margin:18px 0 0;}
                   text-align:center;margin-bottom:34px;}
   .edu .wrap-head h2{font-size:clamp(28px,2.6vw,38px);}
 }
+
+/* ================= CAROUSEL 2 ẢNH (Section 4 — Đóng gói tại trang trại) =================
+   Trượt bằng scroll-snap gốc của trình duyệt: mobile vuốt tay, desktop bấm mũi tên.
+   Không thư viện, không autoplay, không lightbox. Khung ảnh giữ nguyên .shot--wide
+   nên không có layout shift khi đổi ảnh. */
+.slider{position:relative;}
+.slider-track{
+  display:flex;width:100%;height:100%;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;-ms-overflow-style:none;
+}
+.slider-track::-webkit-scrollbar{display:none;}
+.slider-track > img{
+  flex:0 0 100%;width:100%;height:100%;
+  object-fit:cover;display:block;
+  scroll-snap-align:center;scroll-snap-stop:always;
+}
+/* Chấm chỉ vị trí — nhỏ, đặt trong lòng ảnh, có nền mờ để đọc được trên mọi ảnh */
+.slider-dots{
+  position:absolute;left:50%;bottom:12px;transform:translateX(-50%);
+  display:flex;gap:7px;padding:6px 9px;border-radius:999px;
+  background:rgba(2,48,89,.38);backdrop-filter:blur(2px);
+}
+.slider-dots button{
+  width:7px;height:7px;padding:0;border:0;border-radius:50%;
+  background:rgba(255,255,255,.5);cursor:pointer;
+  transition:background-color .18s ease,transform .18s ease;
+}
+.slider-dots button.on{background:#fff;transform:scale(1.25);}
+/* Mũi tên: chỉ hiện từ tablet trở lên, mobile đã có thao tác vuốt */
+.slider-nav{
+  display:none;position:absolute;top:50%;transform:translateY(-50%);
+  width:38px;height:38px;padding:0;border:0;border-radius:50%;
+  background:rgba(2,48,89,.42);color:#fff;cursor:pointer;
+  transition:background-color .18s ease,opacity .18s ease;
+}
+.slider-nav::before{
+  content:"";display:block;width:9px;height:9px;margin:0 auto;
+  border-top:2.5px solid currentColor;border-right:2.5px solid currentColor;
+}
+.slider-prev{left:12px;}
+.slider-prev::before{transform:translateX(2px) rotate(-135deg);}
+.slider-next{right:12px;}
+.slider-next::before{transform:translateX(-2px) rotate(45deg);}
+.slider-nav:hover{background:rgba(2,48,89,.68);}
+.slider-nav[disabled]{opacity:.3;cursor:default;}
+@media(min-width:760px){ .slider-nav{display:block;} }
+@media(prefers-reduced-motion:reduce){ .slider-track{scroll-behavior:auto;} }

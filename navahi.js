@@ -43,3 +43,40 @@
   }, {rootMargin:'0px 0px -8% 0px'});
   els.forEach(function(e){ io.observe(e); });
 })();
+
+/* Carousel 2 ảnh — Section 4. Không autoplay: người dùng tự đổi ảnh. */
+(function(){
+  document.querySelectorAll('[data-slider]').forEach(function(root){
+    var track = root.querySelector('.slider-track'),
+        imgs  = track ? track.querySelectorAll('img') : [],
+        dots  = root.querySelectorAll('.slider-dots button'),
+        prev  = root.querySelector('.slider-prev'),
+        next  = root.querySelector('.slider-next');
+    if(!track || imgs.length < 2) return;
+
+    function index(){ return Math.round(track.scrollLeft / track.clientWidth); }
+    function go(i){
+      i = Math.max(0, Math.min(imgs.length - 1, i));
+      track.scrollTo({left: i * track.clientWidth});
+    }
+    function sync(){
+      var i = index();
+      dots.forEach(function(d, k){ d.classList.toggle('on', k === i); });
+      if(prev) prev.disabled = (i === 0);
+      if(next) next.disabled = (i === imgs.length - 1);
+    }
+
+    if(prev) prev.addEventListener('click', function(){ go(index() - 1); });
+    if(next) next.addEventListener('click', function(){ go(index() + 1); });
+    dots.forEach(function(d, k){ d.addEventListener('click', function(){ go(k); }); });
+
+    var t;
+    track.addEventListener('scroll', function(){
+      clearTimeout(t); t = setTimeout(sync, 90);
+    }, {passive:true});
+    window.addEventListener('resize', function(){
+      clearTimeout(t); t = setTimeout(sync, 150);
+    });
+    sync();
+  });
+})();
