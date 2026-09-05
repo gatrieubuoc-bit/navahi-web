@@ -267,15 +267,31 @@ p{margin:18px 0 0;}
 .band{background:var(--trang);}
 .band{padding:52px 0;}
 .band .lead{margin-top:14px;}
-.prods{display:grid;grid-template-columns:1fr;gap:14px;margin-top:26px;}
-.prod{width:100%;margin:0;}
-.prod img{width:100%;height:auto;border-radius:14px;}
-/* Can bằng visual weight: decal 10 quả là mảng phẳng đậy màu nên thu nhỏ lại;
-   carton 50 có nhiều khoảng trắng quanh hộp nên để tràn. */
-.prod-10{max-width:82%;margin-inline:auto;}
+/* ---------- DANH MỤC SẢN PHẨM — 2 dòng x 2 quy cách ----------
+   Ảnh nguồn có hai định dạng khác nhau: nhãn phẳng (tỉ lệ ~2,25:1) và
+   mockup carton (3:2). Không ép hai định dạng về cùng tỉ lệ vật lý —
+   thay vào đó đặt tất cả vào MỘT KHUNG chung, nền và bo góc giống nhau,
+   rồi dùng object-fit:contain. Ảnh không bị cắt, không kéo méo, và cả
+   bốn sản phẩm vẫn đọc ra là cùng một hệ thống. */
+.lines{display:grid;gap:38px;margin-top:30px;}
+.line-name{
+  margin:0 0 14px;color:var(--navy);font-weight:700;letter-spacing:-.01em;
+  font-size:clamp(19px,4.8vw,24px);
+}
+.skus{display:grid;grid-template-columns:1fr;gap:18px;}
+.sku{margin:0;}
+.sku-shot{
+  aspect-ratio:16/10;background:var(--nga);border-radius:14px;
+  display:flex;align-items:center;justify-content:center;padding:14px;
+}
+.sku-shot img{width:100%;height:100%;object-fit:contain;}
+.sku figcaption{
+  margin-top:10px;font-size:15px;font-weight:600;color:rgba(2,48,89,.82);
+}
 @media(min-width:760px){
-  .prods{grid-template-columns:1fr 1fr;gap:24px;align-items:center;}
-  .prod-10{max-width:100%;}
+  /* Desktop: hai quy cách của cùng một dòng đứng cạnh nhau. */
+  .lines{gap:44px;}
+  .skus{grid-template-columns:1fr 1fr;gap:24px;}
 }
 
 /* ---------- SECTION 4 ---------- */
@@ -345,19 +361,8 @@ p{margin:18px 0 0;}
 
 /* Nhịp dọc trang Trứng Navahi sau khi gỡ khối nội dung nội bộ:
    ảnh sản phẩm đi thẳng xuống CTA nên cần thêm khoảng thở. */
-.band .prods + .cta-row{margin-top:36px;}
+.band .lines + .cta-row{margin-top:36px;}
 
-/* Danh sách điểm mua */
-.spots{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}
-@media(min-width:760px){ .spots{grid-template-columns:1fr 1fr;} }
-.spot{background:#fff;border-radius:14px;padding:18px 20px;}
-.spot h3{margin:0 0 6px;font-size:18px;color:var(--navy);}
-.spot p{margin:0;font-size:15px;color:rgba(2,48,89,.8);}
-.empty{
-  background:#fff;border-radius:16px;padding:24px;margin-top:24px;
-}
-.empty p{margin:0;color:rgba(2,48,89,.85);}
-.empty .cta-row{margin-top:20px;}
 .btn-navy{background:var(--navy);color:#fff;}
 .btn-navy:hover{background:#001c36;}
 

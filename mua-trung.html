@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tìm điểm bán trứng Navahi | Navahi Farms</title>
-<meta name="description" content="Navahi bán hàng thông qua các đại lý. Nhắn cho chúng tôi để tìm điểm bán phù hợp tại khu vực của bạn.">
+<meta name="description" content="Navahi bán hàng thông qua các đại lý. Nhắn cho Navahi để tìm điểm bán phù hợp tại khu vực của bạn.">
 <link rel="canonical" href="https://navahifarms.vn/mua-trung.html">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://navahifarms.vn/mua-trung.html">
 <meta property="og:title" content="Tìm điểm bán trứng Navahi | Navahi Farms">
-<meta property="og:description" content="Navahi bán hàng thông qua các đại lý. Nhắn cho chúng tôi để tìm điểm bán phù hợp tại khu vực của bạn.">
+<meta property="og:description" content="Navahi bán hàng thông qua các đại lý. Nhắn cho Navahi để tìm điểm bán phù hợp tại khu vực của bạn.">
 <meta property="og:image" content="https://navahifarms.vn/assets/hero.webp">
 <meta property="og:locale" content="vi_VN">
 <meta name="twitter:card" content="summary_large_image">
@@ -43,50 +43,43 @@
   <section class="page-head">
     <div class="wrap">
       <h1 class="rise">Tìm trứng Navahi gần bạn</h1>
-      <p class="lead rise">Navahi bán hàng thông qua các đại lý. Nhắn cho chúng tôi để tìm điểm bán phù hợp tại khu vực của bạn.</p>
+      <p class="lead rise">Navahi bán hàng thông qua các đại lý. Nhắn cho Navahi để tìm điểm bán phù hợp tại khu vực của bạn.</p>
     </div>
   </section>
 
   <section class="sec edge edge--nga">
     <div class="wrap">
-      <div id="spots"></div>
+      <h2 class="rise">Khu vực Navahi đang phục vụ</h2>
+      <ul class="arch" id="khu-vuc"></ul>
+      <p class="lead rise">Nhắn Navahi để được kết nối với đại lý đang phục vụ tại khu vực của bạn.</p>
+      <div class="cta-row rise">
+        <a class="btn btn-primary" href="https://zalo.me/0868887890" target="_blank" rel="noopener">Nhắn Zalo</a>
+      </div>
     </div>
   </section>
 </main>
 
 <script>
 /* ------------------------------------------------------------------
-   DANH SÁCH ĐIỂM MUA — PO điền vào mảng dưới đây khi có dữ liệu thật.
-   Mỗi mục: { ten: "", khu_vuc: "", ghi_chu: "" }
-   Để trống ⇒ trang tự hiển thị trạng thái "đang cập nhật" + kênh liên hệ.
-   KHÔNG điền tên/địa chỉ nếu chưa xác nhận với đại lý.
+   KHU VỰC NAVAHI ĐANG PHỤC VỤ
+   PO thêm khu vực mới bằng cách thêm một chuỗi vào mảng dưới đây,
+   không cần dựng lại layout.
+   CHỈ ghi TÊN KHU VỰC. Không ghi tên đại lý, số điện thoại đại lý,
+   địa chỉ căn hộ, địa chỉ điểm bán cụ thể hay giờ hoạt động.
    ------------------------------------------------------------------ */
-var NAVAHI_DIEM_MUA = [];
+var NAVAHI_KHU_VUC = [
+  "Vinhomes Times City",
+  "Vinhomes Ocean Park 1"
+];
 
 (function(){
-  var box = document.getElementById('spots');
+  var box = document.getElementById('khu-vuc');
   if(!box) return;
-  if(NAVAHI_DIEM_MUA.length){
-    var g = document.createElement('div');
-    g.className = 'spots';
-    NAVAHI_DIEM_MUA.forEach(function(d){
-      var c = document.createElement('div');
-      c.className = 'spot';
-      var h = document.createElement('h3'); h.textContent = d.ten || '';
-      var p = document.createElement('p');
-      p.textContent = [d.khu_vuc, d.ghi_chu].filter(Boolean).join(' · ');
-      c.appendChild(h); c.appendChild(p); g.appendChild(c);
-    });
-    box.appendChild(g);
-  } else {
-    box.innerHTML =
-      '<div class="empty">' +
-      '<p>Danh sách điểm bán đang được cập nhật. Nhắn cho Navahi để được chỉ cách mua tại khu vực của bạn.</p>' +
-      '<div class="cta-row">' +
-      '<a class="btn btn-primary" href="https://zalo.me/0868887890" target="_blank" rel="noopener">Nhắn Zalo</a>' +
-      '<a class="btn btn-navy" href="tel:0868887890">Gọi 086.888.7890</a>' +
-      '</div></div>';
-  }
+  NAVAHI_KHU_VUC.forEach(function(ten){
+    var li = document.createElement('li');
+    li.textContent = ten;
+    box.appendChild(li);
+  });
 })();
 </script>
 
