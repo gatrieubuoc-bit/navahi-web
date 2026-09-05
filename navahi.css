@@ -143,7 +143,7 @@ p{margin:18px 0 0;}
   .hero{display:grid;grid-template-columns:55fr 45fr;align-items:stretch;}
   .hero > *{min-width:0;}
   .hero .hero-photo{aspect-ratio:3/2;height:auto;max-height:560px;}
-  .hero .hero-photo img{object-position:center 62%;}
+  .hero .hero-photo img{object-position:center bottom;}
   .hero .hero-copy{
     display:flex;align-items:center;
     padding:40px clamp(48px,4vw,64px);
