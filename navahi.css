@@ -190,6 +190,18 @@ p{margin:18px 0 0;}
   .hero-copy .cta-row{justify-content:flex-start;}
 }
 
+/* Dòng hỗ trợ sản phẩm dưới hai CTA hero — dành cho khách quét QR trên hộp.
+   Là text link, KHÔNG phải nút: đứng dưới cả hai CTA về mặt phân cấp. */
+.hero-support{
+  margin:16px 0 0;font-size:15px;line-height:1.5;
+  color:rgba(2,48,89,.82);
+}
+.hero-support a{
+  font-weight:700;color:var(--navy);text-decoration:none;
+  border-bottom:1.5px solid rgba(2,48,89,.42);
+}
+.hero-support a:hover{border-color:var(--navy);}
+
 /* "4 m²" chỉ nhấn bằng độ đậm, giữ màu trắng như phần còn lại.
    Không gạch chân, không badge, không highlight — để con số đọc ra
    như một sự thật chứ không như một nhãn khuyến mãi. */
@@ -272,24 +284,21 @@ p{margin:18px 0 0;}
 @media(min-width:700px){ .strip.open{grid-template-columns:repeat(3,1fr);} }
 .strip .shot{aspect-ratio:1/1;border-radius:14px;}
 
-/* ---------- SECTION 5 — CONSUMER CTA ---------- */
-.buy{background:var(--xanh);color:#fff;}
-.buy h2{color:#fff;}
-.buy .lead{color:rgba(255,255,255,.94);}
-.buy .btn-primary{background:var(--vang);color:var(--navy);}
+/* ---------- CTA BAND CHÍNH — nền xanh, nút vàng ----------
+   Luật màu giữ nguyên: VÀNG CHỈ DÀNH CHO CONVERSION CHÍNH.
+   Ở giai đoạn B2B2C này conversion chính là tuyển đại lý, nên mặt xanh
+   + nút vàng chuyển sang section đại lý; khách lẻ dùng band phụ bên dưới. */
+.cta-band{background:var(--xanh);color:#fff;}
+.cta-band h2{color:#fff;}
+.cta-band .lead{color:rgba(255,255,255,.94);margin-top:14px;}
+.cta-band .btn-primary{background:var(--vang);color:var(--navy);}
 
-/* ---------- SECTION 5b — DEALER CTA ----------
-   Đường chuyển đổi của đại lý tách hẳn khỏi mặt xanh của khách lẻ:
-   nền trắng ngà như các section kể chuyện, chữ navy, nút navy.
-   Không dùng vàng — vàng dành cho conversion chính. */
-.dealer-sec{background:var(--nga);padding:44px 0;}
-.dealer{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;}
-.dealer h3{
-  margin:0;color:var(--navy);font-weight:700;letter-spacing:-.01em;
-  font-size:clamp(19px,4.8vw,24px);
-}
-.dealer .btn{background:var(--navy);color:#fff;padding:13px 24px;font-size:15px;}
-.dealer .btn:hover{background:#001c36;}
+/* ---------- CTA BAND PHỤ — nền trắng ngà, nút navy ----------
+   "Tìm điểm bán" phải rõ ràng và dễ bấm, nhưng không được cạnh tranh
+   thị giác với CTA đại lý. Không dùng vàng ở đây. */
+.cta-quiet{background:var(--nga);}
+.cta-quiet h2{color:var(--navy);}
+.cta-quiet .lead{color:rgba(2,48,89,.86);margin-top:14px;}
 
 /* ---------- FOOTER ---------- */
 .ft{background:var(--navy);color:rgba(255,255,255,.82);padding:52px 0 40px;font-size:15px;}
@@ -307,14 +316,14 @@ p{margin:18px 0 0;}
   .btn,.btn-link::after{transition:none;}
 }
 :focus-visible{outline:3px solid var(--xanh);outline-offset:3px;border-radius:4px;}
-.buy :focus-visible{outline-color:var(--vang-trung);}
+.cta-band :focus-visible{outline-color:var(--vang-trung);}
 .hero :focus-visible{outline-color:var(--navy);}
 
 
 /* ================= V1 — NAVIGATION + TRANG CON ================= */
 
-/* Mục "Mua trứng" trong menu là primary consumer CTA nên tách hẳn
-   khỏi nhóm navigation item thường. */
+/* Mục "Trở thành đại lý" là CTA nổi bật của menu nên tách hẳn khỏi nhóm
+   navigation item thường. "Tìm điểm bán" trở lại thành link điều hướng. */
 .menu a.menu-cta{
   /* CTA điều hướng, không phải conversion block của trang:
      gọn hơn các mục menu nhưng vẫn đủ để nhận ra là một hành động.
@@ -334,14 +343,9 @@ p{margin:18px 0 0;}
 .page-head h1{color:#fff;font-size:clamp(29px,7.4vw,50px);}
 .page-head .lead{color:rgba(255,255,255,.94);margin-top:14px;max-width:34em;}
 
-/* Khối chỗ trống — đánh dấu rõ để không bị nhầm là nội dung chính thức */
-.ph{
-  border:1.5px dashed rgba(2,48,89,.28);border-radius:14px;
-  padding:20px;margin-top:16px;background:rgba(255,255,255,.5);
-}
-.ph b{display:block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(2,48,89,.55);margin-bottom:6px;}
-.ph p{margin:0;color:rgba(2,48,89,.8);font-size:16px;}
+/* Nhịp dọc trang Trứng Navahi sau khi gỡ khối nội dung nội bộ:
+   ảnh sản phẩm đi thẳng xuống CTA nên cần thêm khoảng thở. */
+.band .prods + .cta-row{margin-top:36px;}
 
 /* Danh sách điểm mua */
 .spots{display:grid;grid-template-columns:1fr;gap:14px;margin-top:24px;}
@@ -362,18 +366,44 @@ p{margin:18px 0 0;}
    Ba khối xếp dọc để khách cuộn qua lần lượt ba môi trường sống.
    Ảnh làm phần lớn việc giải thích; chữ ngắn, trung tính. */
 .wrap-head{margin-bottom:30px;}
+/* KHÔNG dùng biên thô giữa hero thesis và section này. Hai khối phải đọc
+   ra là hai nội dung tách bạch, để không ai hiểu ảnh chăn nuôi công nghiệp
+   là ảnh trại Navahi. Phân tách bằng cạnh thẳng + khoảng trắng rộng. */
+.edu{padding-top:76px;}
+.edu .wrap-head .lead{margin-top:14px;margin-inline:auto;color:rgba(2,48,89,.84);}
 .edu .sys + .sys{margin-top:40px;}
-.sys h3{margin:20px 0 0;font-size:clamp(22px,5.2vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.15;}
+
+/* Thứ tự đọc trong mỗi khối: TÊN HỆ THỐNG → HÌNH MINH HỌA → GIẢI THÍCH.
+   Header đứng đầu và nặng nhất; caption là chú thích của ảnh nên bám sát
+   ảnh và nhẹ hơn hẳn body; mô tả tách ra bằng một khoảng rộng hơn. */
+.sys h3{margin:0 0 14px;font-size:clamp(22px,5.2vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.15;}
+.sys-caption{
+  margin:10px 0 0;font-size:13.5px;line-height:1.45;
+  color:rgba(2,48,89,.6);
+}
+.sys-desc{margin:20px 0 0;}
 .sys-photo{width:100%;border-radius:16px;overflow:hidden;background:var(--xanh-nhat);}
 .sys-photo img{width:100%;height:auto;display:block;}   /* mobile: không cắt gì */
 .sys p{max-width:32em;}
 @media(min-width:900px){
+  .edu{padding-top:104px;}
   .edu .wrap{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
   .edu .sys + .sys{margin-top:0;}
   /* desktop: cố định khung để hai cột thẳng hàng, cắt rất nhẹ */
   .sys-photo{aspect-ratio:16/10;}
   .sys-photo img{height:100%;object-fit:cover;}
 }
+
+/* ---- Dải chuyển mạch: từ "thị trường làm thế nào" sang "Navahi làm thế nào" ----
+   Là một mốc phân đoạn, cố ý KHÔNG dựng thành heading để không tranh
+   thứ bậc với h2 "Navahi chọn chăn thả tự do" ngay bên dưới. */
+.turn{background:var(--nga);padding:6px 0 40px;text-align:center;}
+.turn p{
+  margin:0;color:var(--navy);font-weight:700;
+  text-transform:uppercase;letter-spacing:.14em;line-height:1.4;
+  font-size:clamp(14px,3.9vw,17px);
+}
+@media(min-width:900px){ .turn{padding:14px 0 52px;} }
 
 /* ---- Khối payoff: Navahi chọn chăn thả tự do ----
    Lặp lại đúng nhịp của hero — ẢNH rồi đến KHỐI NAVY — để người đọc

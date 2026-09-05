@@ -1,5 +1,8 @@
-NAVAHI FARMS — WEBSITE V1 — BỘ FULL
-Ngày xuất: 2026-08-22
+NAVAHI FARMS — WEBSITE — BỘ FULL
+Ngày xuất: 2026-09-05
+Nội dung: PHASE 1 (CTA đại lý · tìm điểm bán · hỗ trợ Zalo · tách hình
+minh hoạ ngành) + vòng sửa cấu trúc hai khối so sánh trên trang
+"Vì sao trứng Navahi khác".
 
 CÁCH DÙNG
 1. Xoá TOÀN BỘ file cũ trong repo gatrieubuoc-bit/navahi-web
@@ -12,7 +15,7 @@ CẤU TRÚC
     index.html            trang chủ
     cach-nuoi-ga.html     Vì sao trứng Navahi khác
     trung-navahi.html     Trứng Navahi
-    mua-trung.html        Mua trứng
+    mua-trung.html        Tìm điểm bán
     dai-ly.html           Trở thành đại lý
     navahi.css            toàn bộ style
     navahi.js             menu, hiệu ứng cuộn, carousel
@@ -23,14 +26,47 @@ CẤU TRÚC
     apple-touch-icon.png
     assets/               17 file ảnh
 
-KHÁC BIỆT SO VỚI BẢN ĐANG CHẠY TRÊN main
-  index.html   — section 4 chuyển thành carousel 2 ảnh
-  navahi.css   — hero đổi nền navy sang vàng; thêm khối style carousel
-  navahi.js    — thêm đoạn điều khiển carousel
-  assets/dong-goi.webp      MỚI  1300x975
-  assets/dong-goi-760.webp  MỚI  760x570
-  24 file còn lại giữ nguyên, đã đối chiếu checksum khớp 100% với main
+KHÁC BIỆT SO VỚI BẢN ĐANG CHẠY TRÊN main (bản 2026-08-22)
+  index.html
+    — hero: một CTA "Mua trứng" thành hai CTA "Trở thành đại lý"
+      (chính) + "Tìm điểm bán" (phụ), thêm dòng link hỗ trợ Zalo
+    — menu: "Mua trứng" thành "Tìm điểm bán" (link thường);
+      "Trở thành đại lý" nhận style CTA nổi bật
+    — đảo thứ tự hai section cuối: đại lý lên trước, tìm điểm bán sau
+    — section đại lý nâng thành section đủ heading/body/CTA
+    — footer: thêm dòng hỗ trợ sản phẩm qua Zalo
+  trung-navahi.html
+    — gỡ hoàn toàn khối nội dung nội bộ "Nội dung chờ bổ sung"
+    — CTA cuối trang thành cặp đại lý + tìm điểm bán
+    — menu và footer như trên
+  cach-nuoi-ga.html
+    — bỏ biên thô giữa hero và section so sánh, tăng khoảng trắng
+    — heading section: "Hai cách nuôi phổ biến trên thị trường"
+    — thêm đoạn dẫn dưới heading
+    — mỗi khối sắp lại: header → ảnh → caption "Hình minh họa…" → mô tả
+    — header khối 2 đổi thành "Nuôi nền trong chuồng"
+    — thêm dải chuyển mạch "NAVAHI LỰA CHỌN CÁCH KHÁC"
+    — CTA cuối trang thành cặp đại lý + tìm điểm bán
+    — menu và footer như trên
+  mua-trung.html
+    — title, og:title, description, câu lead đổi sang wording tìm điểm bán
+    — TÊN FILE VÀ URL GIỮ NGUYÊN
+    — menu và footer như trên
+  dai-ly.html
+    — menu và footer như trên
+  navahi.css
+    — .buy/.dealer-sec thay bằng .cta-band (xanh + nút vàng) và
+      .cta-quiet (ngà + nút navy); luật "vàng chỉ cho conversion chính"
+      giữ nguyên, chỉ đổi section nào là conversion chính
+    — thêm .hero-support, .turn, .sys-caption, .sys-desc
+    — bỏ .ph (khối nội dung nội bộ) và .img-label (badge đè lên ảnh)
+    — .sys h3 chuyển lên đầu khối
 
-KHÔNG ĐỔI
-  copy, heading, metadata, canonical, sitemap, robots, favicon,
-  địa chỉ footer, navigation, trang đại lý, các trang con.
+KHÔNG ĐỔI (checksum khớp 100% với main)
+  navahi.js · sitemap.xml · robots.txt · favicon.ico · favicon-32.png
+  apple-touch-icon.png · toàn bộ 17 file trong assets/
+
+KHÔNG THUỘC BỘ NÀY — ĐỂ LẠI PHASE 2
+  Ảnh sản phẩm và danh mục SKU: không thêm Limited Selection, không thêm
+  hộp 60 quả, không xoá ảnh hộp 50 quả, không đổi "50 quả" thành
+  "60 quả", không sửa decal/mockup. Wording 10/50 giữ nguyên.
