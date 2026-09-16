@@ -275,9 +275,15 @@ p{margin:18px 0 0;}
    bốn sản phẩm vẫn đọc ra là cùng một hệ thống. */
 .lines{display:grid;gap:38px;margin-top:30px;}
 .line-name{
-  margin:0 0 14px;color:var(--navy);font-weight:700;letter-spacing:-.01em;
+  margin:0 0 8px;color:var(--navy);font-weight:700;letter-spacing:-.01em;
   font-size:clamp(19px,4.8vw,24px);
 }
+.line-copy{margin:0 0 14px;}
+.line-desc{
+  margin:0 0 4px;color:rgba(2,48,89,.82);font-weight:600;
+  font-size:clamp(15px,3.6vw,17px);line-height:1.45;
+}
+.line-desc:last-child{margin-bottom:0;}
 .skus{display:grid;grid-template-columns:1fr;gap:18px;}
 .sku{margin:0;}
 .sku-shot{
