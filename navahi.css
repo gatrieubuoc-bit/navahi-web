@@ -598,8 +598,9 @@ p{margin:18px 0 0;}
    Một nút Zalo cố định theo màn hình (PO chốt 24/09). Ẩn khi footer lọt vào
    khung nhìn để không đè lên chính khối liên hệ ở chân trang.
    Quy tắc dựng sẵn cho nhiều nút nếu sau này thêm — flex column + gap.
-   ⚠️ Icon hiện là PLACEHOLDER hình học — thay bằng file icon chính chủ Zalo
-   khi PO gửi. Không tự vẽ lại logo thương hiệu. */
+   Nút hiện dùng CHỮ "Zalo" (không phải logo Zalo) — rõ nghĩa, không đọc nhầm
+   sang Messenger. Khi PO gửi file SVG chính chủ thì thay phần bên trong thẻ <a>,
+   không phải sửa gì khác. */
 .dock{
   position:fixed; right:16px; bottom:16px; z-index:60;
   display:flex; flex-direction:column; gap:10px;
@@ -622,7 +623,9 @@ p{margin:18px 0 0;}
 .dock a svg{ width:26px; height:26px; display:block; }
 @media(min-width:760px){ .dock a svg{width:28px; height:28px;} }
 .dock .dock-zalo{ color:var(--xanh); }
-.dock .dock-fb{ color:var(--navy); }
+/* Icon Zalo chính chủ (assets/icon-zalo.svg) — giữ nguyên màu thương hiệu Zalo */
+.dock a img{ width:27px; height:auto; display:block; }
+@media(min-width:760px){ .dock a img{width:30px;} }
 @media(prefers-reduced-motion:reduce){
   .dock, .dock a{ transition:none; }
   .dock[data-hidden="true"]{ transform:none; }
