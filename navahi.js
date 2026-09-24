@@ -80,3 +80,15 @@
     sync();
   });
 })();
+
+/* Dock liên hệ nổi — ẩn khi footer lọt vào khung nhìn, để không đè lên
+   chính khối liên hệ ở chân trang. */
+(function(){
+  var dock = document.getElementById('dock'),
+      ft   = document.querySelector('footer.ft');
+  if(!dock || !ft || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function(en){
+    en.forEach(function(x){ dock.setAttribute('data-hidden', x.isIntersecting ? 'true' : 'false'); });
+  }, {rootMargin:'0px 0px -12% 0px'});
+  io.observe(ft);
+})();
