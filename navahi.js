@@ -148,7 +148,7 @@
   });
 })();
 
-/* Xem đầy đủ nhận xét dài (review Google của Matt Hoang) */
+/* Xem đầy đủ nhận xét dài (thẻ có nút "Xem đầy đủ") */
 (function(){
   var dlg = document.getElementById('kh-dialog'),
       img = document.getElementById('kh-dialog-img');
