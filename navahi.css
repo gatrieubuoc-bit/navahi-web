@@ -730,3 +730,6 @@ p{margin:18px 0 0;}
 }
 .kh-close::before{transform:translate(-50%,-50%) rotate(45deg);}
 .kh-close::after{transform:translate(-50%,-50%) rotate(-45deg);}
+/* Section khách hàng nằm trên nền trắng ngà, liền ngay trên phần trang trại cũng
+   nền trắng ngà: một đường mảnh cuối section để hai phần không dính vào nhau. */
+.kh .wrap::after{content:"";display:block;height:1px;background:#E3DED8;margin-top:56px;}
