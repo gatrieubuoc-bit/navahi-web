@@ -92,3 +92,77 @@
   }, {rootMargin:'0px 0px -12% 0px'});
   io.observe(ft);
 })();
+
+
+/* Section "Khách hàng nói gì" — dải vuốt ngang cho nhận xét và ảnh món ăn.
+   Không autoplay. Nút trước/sau đi theo từng lượt đang thấy; chấm chỉ vị trí
+   tự sinh theo số lượt; đã thấy hết thì ẩn cả nút lẫn chấm. */
+(function(){
+  document.querySelectorAll('[data-reel]').forEach(function(root){
+    var track = root.querySelector('.reel-track'),
+        items = track ? track.children : [],
+        prev  = root.querySelector('.reel-prev'),
+        next  = root.querySelector('.reel-next'),
+        dotsW = root.querySelector('.reel-dots');
+    if(!track || !items.length) return;
+
+    function step(){ return items.length > 1 ? items[1].offsetLeft - items[0].offsetLeft : track.clientWidth; }
+    function perView(){
+      var s = step(), gap = s - items[0].getBoundingClientRect().width;
+      return Math.max(1, Math.floor((track.clientWidth + gap + 2) / s));
+    }
+    function pages(){ return Math.max(1, Math.ceil(items.length / perView())); }
+    function page(){
+      var max = track.scrollWidth - track.clientWidth;
+      if(max > 0 && track.scrollLeft >= max - 4) return pages() - 1;
+      return Math.round(track.scrollLeft / (step() * perView()));
+    }
+    function go(p){
+      p = Math.max(0, Math.min(pages() - 1, p));
+      track.scrollTo({left: p * perView() * step()});
+    }
+
+    var built = -1;
+    function build(){
+      var n = pages();
+      root.classList.toggle('fits', n < 2);
+      if(!dotsW || n === built) return;
+      dotsW.innerHTML = '';
+      for(var i = 0; i < n; i++) dotsW.appendChild(document.createElement('span'));
+      built = n;
+    }
+    function sync(){
+      build();
+      var p = page(), n = pages();
+      if(dotsW) Array.prototype.forEach.call(dotsW.children, function(d, k){ d.classList.toggle('on', k === p); });
+      if(prev) prev.disabled = (p <= 0);
+      if(next) next.disabled = (p >= n - 1);
+    }
+
+    if(prev) prev.addEventListener('click', function(){ go(page() - 1); });
+    if(next) next.addEventListener('click', function(){ go(page() + 1); });
+    var t;
+    track.addEventListener('scroll', function(){ clearTimeout(t); t = setTimeout(sync, 90); }, {passive:true});
+    window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(sync, 150); });
+    sync();
+  });
+})();
+
+/* Xem đầy đủ nhận xét dài (review Google của Matt Hoang) */
+(function(){
+  var dlg = document.getElementById('kh-dialog'),
+      img = document.getElementById('kh-dialog-img');
+  if(!dlg || !img) return;
+  var close = dlg.querySelector('.kh-close');
+  document.querySelectorAll('.kh-more').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var src = btn.closest('.kh-shot').querySelector('img');
+      img.src = btn.getAttribute('data-full');
+      img.alt = src ? src.alt : '';
+      if(typeof dlg.showModal === 'function'){ dlg.showModal(); dlg.scrollTop = 0; }
+      else { window.open(img.src, '_blank', 'noopener'); }
+    });
+  });
+  if(close) close.addEventListener('click', function(){ dlg.close(); });
+  dlg.addEventListener('click', function(e){ if(e.target === dlg) dlg.close(); });
+})();
