@@ -595,7 +595,7 @@ p{margin:18px 0 0;}
 
 
 /* ================= V13 — DOCK LIÊN HỆ NỔI (bottom-right) =================
-   Một nút Zalo cố định theo màn hình (PO chốt 24/09). Ẩn khi footer lọt vào
+   V15 (11/11/2026): ba nút Facebook · Messenger · Zalo (trước đó chỉ Zalo, 24/09). Ẩn khi footer lọt vào
    khung nhìn để không đè lên chính khối liên hệ ở chân trang.
    Quy tắc dựng sẵn cho nhiều nút nếu sau này thêm — flex column + gap.
    Nút hiện dùng CHỮ "Zalo" (không phải logo Zalo) — rõ nghĩa, không đọc nhầm
@@ -623,7 +623,7 @@ p{margin:18px 0 0;}
 .dock a svg{ width:26px; height:26px; display:block; }
 @media(min-width:760px){ .dock a svg{width:28px; height:28px;} }
 .dock .dock-zalo{ color:var(--xanh); }
-/* Icon Zalo chính chủ (assets/icon-zalo.svg) — giữ nguyên màu thương hiệu Zalo */
+/* Icon chính chủ (Zalo / Messenger / Facebook) — giữ nguyên màu thương hiệu từng app */
 .dock a img{ width:27px; height:auto; display:block; }
 @media(min-width:760px){ .dock a img{width:30px;} }
 @media(prefers-reduced-motion:reduce){
